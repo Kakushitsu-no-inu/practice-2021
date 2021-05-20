@@ -1,0 +1,1 @@
+MakeLab(TARGET main1 SOURCES src/array.cpp main.cpp)
