@@ -19,7 +19,7 @@ array::array(int size, int data) : size(size) {
 
 void array::fill_array(){
     std::srand(static_cast<unsigned>(std::time(0))); 
-    for(auto i = arr; i < arr+size; i++){ *i =rand()%9+1;}
+    for(auto i = 0; i < size; i++){ arr[i] =rand()%20-10;}
 }
 
 array::Iterator::Iterator(int*a) : ptr(a){}
@@ -39,7 +39,7 @@ bool array::Iterator::operator!=(const Iterator &other){
 bool array::Iterator::operator==(const Iterator &other){
             return ptr==other.ptr;
         }
-double array::Iterator::operator*() const  {return *ptr;}
+int array::Iterator::operator*() const  {return *ptr;}
 array::Iterator array::Iterator::operator+(int a){
             auto tmp = ptr;
             for (int i = 0; i < a; i++) {
@@ -53,7 +53,7 @@ array::Iterator array::end() {return Iterator{arr+size};}
 int& array::operator[](int i) const { 
     if(i < 0 || i > size) 
         throw std::out_of_range("Вихід за межі масиву"); 
-    return *(arr + i - 1); 
+    return *(arr + i); 
 }
 
 array::~array(){delete[]arr;}
@@ -61,17 +61,20 @@ array::~array(){delete[]arr;}
 std::ostream& operator<<(std::ostream &out, const array &a) {
         for (int i = 0; i < a.size; i++)
         {
-            out << a[i] << " ";
+            out << a.arr[i] << " ";
         }
         out << "\n";
         return out;
     }
 void array::func(){
-    auto mid = (size + 1)/2;
+    auto mid = size/2;
     auto beginIt = this->begin();
     auto endIt = this->end();
     auto midIt = this->begin() + mid;
-    std::cout << "Сума першої половини = " << std::accumulate(beginIt, midIt, 0) 
-            << " Кількість позитивних = " << std::count_if(beginIt, midIt,[](int &t){return t > 0;})<<std::endl;
-    std::cout << "Сума другої половини = " << std::accumulate(midIt, endIt, 0) << std::endl;
+    auto positive = [](const int &t){return t > 0;};
+    size_t pos = std::count_if(beginIt, midIt, positive);
+    std::cout << "Сума першої половини = " << std::accumulate(beginIt, midIt, 0)
+            << " Кількість позитивних = " << pos <<std::endl;
+    std::cout << "Сума другої половини = " << std::accumulate(midIt, endIt, 0)
+            << " Кількість позитивних = " << std::count_if(midIt, endIt, positive) <<std::endl;
 }

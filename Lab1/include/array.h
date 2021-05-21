@@ -17,12 +17,13 @@ public:
     {
         int* ptr;
         public:
+        using difference_type = std::ptrdiff_t;
         Iterator(int*a);
         Iterator& operator++();
         Iterator operator++(int);
         bool operator!=(const Iterator &other);
         bool operator==(const Iterator &other);
-        double operator*() const;
+        int operator*() const;
         Iterator operator+(int a);
     };
     Iterator begin();
