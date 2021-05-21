@@ -1,12 +1,17 @@
-function(MakeLab)
+function(simple_lib)
     include(CMakeParseArguments)
-    cmake_parse_arguments(LAB "" "EXE" "SOURCES" ${ARGN})
+    cmake_parse_arguments(
+        PARSED_ARGS
+        ""
+        "NAME"
+        "SOURCES"
+        ${ARGN}
+    )
 
-    set(SRC ${LAB_SOURCES})
-    set(EXEC ${LAB_EXE})
-
-    add_executable(${EXEC})
-    target_sources(${EXEC} PUBLIC ${SRC})
-    target_include_directories(${EXEC} PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/include)
-endfunction()
+    set(src ${PARSED_ARGS_SOURCES})
+    set(lib ${PARSED_ARGS_NAME})
+    add_library(${lib} STATIC)
+    add_library(${lib}::${lib} ALIAS ${lib})
+    target_include_directories(${lib} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+   target_sources(${lib} PUBLIC ${src})
+endfunction(simple_lib)

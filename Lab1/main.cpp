@@ -8,6 +8,6 @@ int main()
     array a(n);
     a.fill_array();
     std::cout << a;
-    a.func();
+    // a.func();
     return 0;
 }

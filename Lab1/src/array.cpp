@@ -66,15 +66,22 @@ std::ostream& operator<<(std::ostream &out, const array &a) {
         out << "\n";
         return out;
     }
-void array::func(){
+array::result array::func(){
     auto mid = size/2;
     auto beginIt = this->begin();
     auto endIt = this->end();
     auto midIt = this->begin() + mid;
     auto positive = [](const int &t){return t > 0;};
-    size_t pos = std::count_if(beginIt, midIt, positive);
-    std::cout << "Сума першої половини = " << std::accumulate(beginIt, midIt, 0)
-            << " Кількість позитивних = " << pos <<std::endl;
-    std::cout << "Сума другої половини = " << std::accumulate(midIt, endIt, 0)
-            << " Кількість позитивних = " << std::count_if(midIt, endIt, positive) <<std::endl;
+    // size_t pos = std::count_if(beginIt, midIt, positive);
+    result a(std::accumulate(beginIt, midIt, 0),std::accumulate(midIt, endIt, 0),
+                   std::count_if(beginIt, midIt, positive),std::count_if(midIt, endIt, positive));
+    std::cout << "Сума першої половини = " << a.sum1
+            << " Кількість позитивних = " << a.pos1 <<std::endl;
+    std::cout << "Сума другої половини = " << a.sum2
+            << " Кількість позитивних = " << a.pos2 <<std::endl;
+    return a;
+}
+void array::copy_from_vec(std::vector<int> &v)
+{
+    std::copy(v.begin(),v.end(),arr);
 }

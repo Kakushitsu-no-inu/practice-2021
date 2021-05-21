@@ -1,5 +1,6 @@
 #pragma once 
 #include <iostream>
+#include <vector>
 
 class array
 {
@@ -7,6 +8,10 @@ class array
     int* arr{};
     void init(int data);
     void memory(int size);
+    struct result
+    {
+        int sum1,sum2,pos1,pos2;
+    };
 public:
     array() = default;
     array(int size);
@@ -31,5 +36,6 @@ public:
     int& operator[](int i) const;
     ~array();
     friend std::ostream& operator<<(std::ostream &out, const array &a);
-    void func() ;
+    result func();
+    void copy_from_vec(std::vector<int> &v);
 };
