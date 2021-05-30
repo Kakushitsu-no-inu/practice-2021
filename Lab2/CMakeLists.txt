@@ -1,14 +1,14 @@
-set(INC include/simple_f.h)
-set(SRC src/simple_f.cpp)
+set(INC include/file.h)
+set(SRC src/file.cpp)
 
-simple_lib(NAME simple_f SOURCES ${INC} ${SRC})
+simple_lib(NAME file SOURCES ${INC} ${SRC})
 
 add_executable(main2 files.cpp)
-target_link_libraries(main2 PRIVATE simple_f)
+target_link_libraries(main2 PRIVATE file)
 
-add_executable(test2 test.cpp)
-target_link_libraries(test2
-    simple_f
-    gtest_main
-)
-gtest_discover_tests(test2)
+# add_executable(test2 test.cpp)
+# target_link_libraries(test2
+#     file
+#     gtest_main
+# )
+# gtest_discover_tests(test2)
