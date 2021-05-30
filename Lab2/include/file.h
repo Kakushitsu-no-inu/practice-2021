@@ -1,7 +1,15 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 
-class file : public std::basic_fstream<char,>
+class file
 {
-
+    std::string name;
+    std::fstream file_;
+public:
+    file(std::string name) : name(name)
+    {
+        file_.open(name);
+    }
+    
 };
