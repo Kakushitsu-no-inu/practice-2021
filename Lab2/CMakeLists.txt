@@ -12,3 +12,5 @@ target_link_libraries(main2 PRIVATE file)
 #     gtest_main
 # )
 # gtest_discover_tests(test2)
+
+file(COPY 1.txt 2.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
