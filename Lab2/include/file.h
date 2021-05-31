@@ -20,6 +20,16 @@ public:
   ~MyFile() = default;
 
   Position compare(MyFile &other);
+
+  int size_B();
+
+  void fill_f(const char* str,size_t bytes);
+  void fill_f(std::string &str);
+
+  void read_f(char *out, int size);
+  void read_f(std::string &out);
+
+  void end_put(const char *, int size);
 };
 
 bool operator==(const MyFile::Position &rhs, const MyFile::Position &lhs);
