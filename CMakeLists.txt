@@ -19,3 +19,4 @@ enable_testing()
 include(GoogleTest)
 
 add_subdirectory(Lab1)
+add_subdirectory(Lab3)

@@ -1,5 +1,5 @@
 #include "simple_s.h"
-#include <typeinfo>
+#include <iomanip>
 
 String& String::operator=(const String & other)
 {
