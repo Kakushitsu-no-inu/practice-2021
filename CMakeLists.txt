@@ -20,5 +20,5 @@ include(GoogleTest)
 
 add_subdirectory(Lab1)
 add_subdirectory(Lab2)
-# add_subdirectory(Lab3)
+add_subdirectory(Lab3)
 
