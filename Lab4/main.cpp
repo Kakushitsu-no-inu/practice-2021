@@ -1,25 +1,44 @@
 #include "register.h"
-#include "ui.h"
+#include "unistd.h"
 
+void Menu();
 void add_new_record();
 void main_search();
 void delete_record();
 void main_sort();
 void quit();
 Register rec;
-    auto main_menu = make_window("Menu", option{[&](menu_base *)
-                                                { add_new_record(); },"Додати новий запис"},
-                                        option{[&](menu_base *)
-                                                { main_search(); },"Пошук"},
-                                        option{[&](menu_base *)
-                                                { delete_record(); },"Видалити запис"},
-                                        option{[&](menu_base *)
-                                                { main_sort(); },"Сортувати"},
-                                        option{[&](menu_base *)
-                                                { quit(); },"Вийти"});
+
 int main()
 {
-
+    for (;;)
+    {
+        sleep(5);
+        system("clear");
+        Menu();
+        int choice;
+        std::cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            add_new_record();
+            break;
+        case 2:
+            delete_record();
+            break;
+        case 3:
+            main_search();
+            break;
+        case 4:
+            main_sort();
+            break;
+        case 0:
+            quit();
+            break;
+        default:
+            break;
+        }
+    }
     return 0;
 }
 
@@ -65,4 +84,11 @@ void main_sort(){
 void quit(){
     rec.push_to_file();
     exit(EXIT_SUCCESS);
+}
+void Menu(){
+    std::cout << "1| Додати новий запис "  << std::endl;
+    std::cout << "2| Видалити запис "  << std::endl;
+    std::cout << "3| Пошук "  << std::endl;
+    std::cout << "4| Сортування"  << std::endl;
+    std::cout << "-----------0:EXIT-----------\n\t> ";
 }
