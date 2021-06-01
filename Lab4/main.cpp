@@ -11,9 +11,11 @@ Register rec;
 
 int main()
 {
+    rec.load_from_file();
     for (;;)
     {
         sleep(5);
+        // pause();
         system("clear");
         Menu();
         int choice;
@@ -61,6 +63,7 @@ void main_search(){
 }
 void delete_record(){
     std::string name, surname, tel;
+    rec.sort_("name");
     std::cout << "Введіть ім'я прізвище та телефон: ";
     std::cin >> name >> surname >> tel;
     try{
