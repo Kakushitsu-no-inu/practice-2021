@@ -49,37 +49,29 @@ std::ostream& operator<<(std::ostream &out, const staff &obj)
 {
     for (int i = 0; i < obj.collection.size(); i++)
     {
-        auto type = std::typeid(obj.collection[i]);
-        // out << obj.collection[i]->print_e() << std::endl;
         out << obj.collection[i]->get_id() << std::endl;
         out << obj.collection[i]->get_name() << std::endl;
         out << obj.collection[i]->get_surname() << std::endl;
         out << obj.collection[i]->get_msalary();
         if (i != obj.collection.size() - 1)
-            std::cout << std::endl;
+            out << std::endl;
     }
     return out;
 }
 
 void staff::load_from_file()
 {
-    std::ifstream file("staff.txt", std::ios::out);
-    while (!file.eof())
+    std::ifstream file("staff.txt");
+    while (file.eof())
     {
-        std::string name{}, surname{},def{};
+        std::string name{}, surname{};
         int id;
         double salary;
-        file >> def;
         file >> id;
         file >> name;
         file >> surname;
         file >> salary;
-        if(def == "fixed")
             add_employee(new f_emp{name, surname, id, salary});
-        else if(def == "hour_wage")
-            add_employee(new h_employee{name, surname, id, salary});
-        else
-            throw std::logic_error("Проблема файлу: помилка запису/зчитування");
     }
     file.close();
 }

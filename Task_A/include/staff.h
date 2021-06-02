@@ -3,7 +3,7 @@
 #include "hour_employee.h"
 #include <vector>
 #include <fstream>
-#include <typeinfo>
+
 
 class staff{
     std::vector<employee *> collection;
