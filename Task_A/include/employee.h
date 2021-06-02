@@ -12,11 +12,9 @@ public:
     employee(std::string name, std::string surname, int id);
     employee(std::string name, std::string surname, int id, double m_salary);
 
-    std::string get_name();
-    std::string get_surname();
-    int get_id();
-    double get_msalary();
+    std::string get_name()const ;
+    std::string get_surname()const ;
+    int get_id()const ;
+    double get_msalary()const ;
     void set_msalary(double salary);
-
-
 };

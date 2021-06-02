@@ -7,3 +7,13 @@ h_employee::h_employee(std::string name, std::string surname, int id, int hourly
 }
 
 int h_employee::get_hrate() { return hourly_rate; }
+
+std::ostream& operator<<(std::ostream &out, const h_employee &obj) 
+{
+    out << obj.get_id() << std::endl;
+    out << obj.get_name() << std::endl;
+    out << obj.get_surname() << std::endl;
+    out << (obj.get_msalary() / (20.8 * 8));
+    return out;
+}
+

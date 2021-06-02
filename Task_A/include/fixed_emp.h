@@ -7,5 +7,6 @@ class f_emp: public employee
 public:
     f_emp();
     f_emp(std::string name, std::string surname, int id, double fixed_salary);
-     
+    friend std::ostream& operator<<(std::ostream &out, const f_emp &obj);
+
 };
