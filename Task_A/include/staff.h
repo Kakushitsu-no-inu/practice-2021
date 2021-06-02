@@ -17,6 +17,7 @@ public:
     void push_to_file();
     void load_from_file();
     void clear_();
+    int size();
 
     friend std::ostream &operator<<(std::ostream &out, const staff &obj);
     friend std::istream &operator>>(std::istream &in, const staff &obj);   

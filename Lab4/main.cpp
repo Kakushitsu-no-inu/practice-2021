@@ -11,7 +11,10 @@ Register rec;
 
 int main()
 {
+    try{
     rec.load_from_file();
+
+    }catch(...){}
     for (;;)
     {
         sleep(5);
@@ -45,7 +48,10 @@ int main()
 }
 
 void add_new_record(){
+    try{
+
     rec.load_from_file();
+    }catch(...){}
     std::string name, surname, tel;
     std::cout << "Введіть ім'я прізвище та телефон: ";
     std::cin >> name >> surname >> tel;

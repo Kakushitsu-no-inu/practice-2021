@@ -62,6 +62,8 @@ std::ostream& operator<<(std::ostream &out, const staff &obj)
 void staff::load_from_file()
 {
     std::ifstream file("staff.txt");
+    if(!file.is_open())
+        throw std::logic_error("файл пустий");
     while (file.eof())
     {
         std::string name{}, surname{};
@@ -87,3 +89,5 @@ void staff::clear_()
 {
     collection.clear();
 }
+
+int staff::size() { return collection.size(); }
