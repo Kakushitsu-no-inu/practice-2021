@@ -16,7 +16,7 @@ int main()
     {
         sleep(5);
         // pause();
-        system("clear");
+        // system("clear");
         Menu();
         int choice;
         std::cin >> choice;
